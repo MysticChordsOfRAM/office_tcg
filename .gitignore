@@ -4,7 +4,7 @@ __pycache__/
 
 venv/
 env/
-static/
+static/images/
 
 .env
 

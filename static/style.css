@@ -1,0 +1,159 @@
+
+/* Every time I think I grasp CSS, Gemini does something complex that */
+/* I just don't get. One day, I hope to understand all that was done here */
+
+body {
+    font-family: "Times New Roman", Times, serif; 
+    line-height: 1.5;
+    margin: 0;
+    padding: 0;
+    background-color: #04030f;
+    color: #000;
+}
+
+body::after {
+    content: " ";
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%
+    );
+    background-size: 100% 4px;
+    
+    z-index: -1; 
+    pointer-events: none;
+}
+
+#hexCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 0.35;
+}
+
+header {
+    background-color: #04030f; 
+    border-bottom: 4px solid #ff5c97;
+    color: #fff;
+    padding: 1rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    background-color: #000;
+    color: #fff;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: #f5efe4;
+    border: 4px solid #eaddc5;
+}
+
+.presentation-styles {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.style-row {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 1rem;
+    border: 2px solid #000; 
+}
+
+.style-icon {
+    flex-shrink: 0;
+    width: 65px; 
+    height: 65px;
+    margin-right: 1.5rem;
+}
+
+.style-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.style-icon-group {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem; 
+    margin-right: 1.5rem;
+    width: 65px; 
+}
+
+.style-icon-group img {
+    width: 100%;
+    height: auto; 
+    object-fit: contain; 
+}
+
+.style-description {
+    flex-grow: 1;
+}
+
+.style-description h4 {
+    margin: 0 0 0.5rem 0;
+    color: #000;
+    font-size: 1.4rem;
+    text-decoration: underline;
+}
+
+.style-description p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.card-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+}
+
+.card-wrapper {
+    background-color: #fff;
+    padding: 0.5rem;
+    border: 3px solid #000;
+    box-shadow: 6px 6px 0px #00a88f;
+    transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+}
+
+.card-wrapper:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0px #ff5c97; 
+}
+
+.card-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid #000;
+}
