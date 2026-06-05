@@ -1,0 +1,17 @@
+services:
+  web:
+    build: .
+    container_name: rec-tcg
+    restart: unless-stopped
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+      - PYTHONUNBUFFERED=1
+    networks:
+      - web_gateway
+
+networks:
+  web_gateway:
+    external: true
+

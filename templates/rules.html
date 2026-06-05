@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block title %}Rules{% endblock %}
+
+{% block content %}
+    
+    <h2>Card Types</h2>
+    
+    <h3>Analyst Cards</h3>
+    <p>Analyst Cards are the main characters of the game. You play one analyst at a time, use Actions to earn <b>Approval Points</b> from the Principals, and, eventually, get that analyst adopted. You win by being the first to get five analysts adopted.</p>
+    
+    <p>All analysts have at least one native action. Analyst Native actions can be used once per turn. Analyst rarity determines the number of native actions, and your maximum hand size.</p>
+    <ul>
+        <li>Common Analysts - One Native Action - 7 Card Hand</li>
+        <li>Uncommon Analysts - Two Native Actions - 5 Card Hand</li>
+        <li>Rare Analysts - Two Native Actions AND a Powerful Passive Ability - 3 Card Hand</li>
+    </ul>
+    
+    <p>Each Analyst has one of three presentation styles. They are either Readers, Closers, or Speakers. The kind of analyst you deploy determines the goalposts you need to meet in order to earn approval from each principal. Some principals may require, for example, 2 AP for Readers to get adopted while only needing 1 AP for Closers to get adopted. Here is some more detail on the styles:</p>
+
+    <div class="presentation-styles">
+        
+        <div class="style-row">
+            <div class="style-icon">
+                <img src="{{ url_for('static', filename='images/rules/reader_icon4.webp') }}" alt="Reader Icon">
+            </div>
+            <div class="style-description">
+                <h4>Readers</h4>
+                <p>Readers value structure, thoroughness, and risk-aversion. They put all the information in front of you, walk you through every detail, and leave no stone unturned. The presentation is meticulously prepared and there is little chance for ad-libbing. This makes Readers popular with people who want things on the record, but unpopular with people who want to get through things as efficiently as possible.</p>
+            </div>
+        </div>
+
+        <div class="style-row">
+            <div class="style-icon">
+                <img src="{{ url_for('static', filename='images/rules/closer_icon4.webp') }}" alt="Closer Icon">
+            </div>
+            <div class="style-description">
+                <h4>Closers</h4>
+                <p>Closers are the opposite of Readers. They value efficiency and time management, and are the most outcome-oriented of the three styles. Closers do not present irrelevant details, they do not expound on narrative or historical precedent, they simply present the information needed to reach adoption, and then get out of the way. This makes them unpopular among people who are looking for deep insights into an analysis, while others who just need to move on are satisfied.</p>
+            </div>
+        </div>
+
+        <div class="style-row">
+            <div class="style-icon">
+                <img src="{{ url_for('static', filename='images/rules/speaker_icon4.webp') }}" alt="Speaker Icon">
+            </div>
+            <div class="style-description">
+                <h4>Speakers</h4>
+                <p>Speakers are creative and extemporaneous. They know their analysis inside and out, take pride in how it was done, and revel in sharing the details. This makes them very engaging at the podium, but causes them to occasionally wander off topic or miss the more important details. Speakers play the riskiest game at the podium, often coming across as highly reliable, until they misspeak and it all falls apart.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <h3>Action Cards</h3>
+    <p>Any card that isn't an analyst card is considered an Action Card because playing them costs... an action. That said, there are different types of Action Cards that do different things in different circumstances. This will get clearer as we get through the rules. For now, let's walk through the different types of Action Cards.</p>
+    
+    <div class="presentation-styles">
+        
+        <div class="style-row">
+            <div class="style-icon">
+                <img src="{{url_for('static', filename='images/rules/action_icon.webp') }}" alt="Action Icon">
+            </div>
+            <div class="style-description">
+                <h4>Standard Actions</h4>
+                <p>These are a specific subset of Action Cards that act as the bread and butter functionality of your deck. Playing one costs one action, after which it gets discarded.</p>
+            </div>
+        </div>
+        
+        <div class="style-row">
+            <div class="style-icon">
+                <img src="{{url_for('static', filename='images/rules/equipable_icon.webp') }}" alt="Equipable Icon">
+            </div>
+            <div class="style-description">
+                <h4>Equipable Cards</h4>
+                <p>Equipable Cards cost an action to play, but they remain on the field attached to your analyst until either (1) removed by a card effect, (2) replaced by a new equipable (you can only field one at a time), or (3) the analyst leaves the field either by being adopted or being rolled. The effects provided by equipables are passive and always in effect, so long as the card is on the field.</p>
+            </div>
+        </div>
+        
+        <div class="style-row">
+            <div class="style-icon">
+                <img src="{{url_for('static', filename='images/rules/reaction_icon.webp') }}" alt="Reaction Icon">
+            </div>
+            <div class="style-description">
+                <h4>Reaction Cards</h4>
+                <p>Reaction Cards are the exception to the broad rule that all Action Cards cost an action. Reactions can only be played on an opponent's turn when their condition is met. Meeting the condition is the only cost to play it. Reactions cannot be reacted to, and an action can only be subject to one reaction per player.</p>
+            </div>
+        </div>    
+        
+        <div class="style-row">
+            <div class="style-icon">
+                <img src="{{url_for('static', filename='images/rules/rogue_icon5.webp') }}" alt="Rogue Icon">
+            </div>
+            <div class="style-description">
+                <h4>Rogue Cards</h4>
+                <p>Rogue Cards represent the other analysts in the room who have sway on the presentation. Each Rogue Card has a <b>Support</b> action and an <b>Oppose</b> action. When you play a rogue card, you must select one of them to activate; you cannot use both.</p>
+            </div>
+        </div>
+        
+        <div class="style-row">
+            <div class="style-icon-group">
+                <img src="{{url_for('static', filename='images/rules/edr_icon.webp') }}" alt="EDR Icon">
+                <img src="{{url_for('static', filename='images/rules/fea_icon.webp') }}" alt="FEA Icon">
+                <img src="{{url_for('static', filename='images/rules/house_icon.webp') }}" alt="House Icon">
+                <img src="{{url_for('static', filename='images/rules/senate_icon.webp') }}" alt="Senate Icon">
+            </div>
+            <div class="style-description">
+                <h4>Principal Cards</h4>
+                <p>Principals are the judges and juries of the REC. The game starts with 4 nameless "Base" principals each requiring a certain amount of AP from different Analyst Styles. But you can collect and play "Named" Principal cards (at the cost of an action) that fundamentally change the rules and the requirements for all Analysts to get adopted. All players on the board share the same 4 Principals, so playing a Named Principal is a good way to either boost yourself, or sabotage an opponent. There are 4 Principal Seats, each seat must be occupied by a Principal representing that seat's office, and only one principal can sit in a seat at a time. When a Named principal is in a seat, playing another Named principal to the same seat discards the previous principal.</p>
+            </div>
+        </div>
+        
+    </div>
+    
+    <h2>Game Structure</h2>
+
+    <h2>Win Conditions</h2>
+    
+{% endblock %}

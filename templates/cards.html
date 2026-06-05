@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Card list{% endblock %}
+
+{% block content %}
+   
+   <div class="card-gallery">
+      {% for num in cards %}
+         <div class="card-wrapper">
+            <img src="{{url_for('static', filename='images/cards/cards_spoof_' ~ num ~ '.webp') }}"
+                 alt = "Card {{ num }}"
+                 loading="lazy">
+         </div>
+      {% endfor %}
+   </div>
+
+{% endblock %}
