@@ -3,18 +3,35 @@
 {% block title %}Rules{% endblock %}
 
 {% block content %}
+
+    <div class = "rules-dossier">
+    <h2>Basic Glossary</h2>
+    <p><b>AP</b> - Approval Points. Awarded by Principals in response to player actions. AP is tied to the analyst and persists so long as that analyst is on the field, or it is removed by a card effect.</p>
+    <p><b>Principal</b> - One of four (4) NPC judges who award AP. Analysts need to meet a specific AP threshold with each principal to get adopted.</p>
+    <p><b>Turn</b> - A single player's turn, beginning with the judgement phase and ending with the draw phase.</p>
+    <p><b>Round</b> - Every players turn from the start of Player 1's Turn to the start of Player 1's next turn.</p>
+
+    <h2>Symbology</h2>
+    <p>Card descriptions utilise inline symbology to save space and enhance readbility. These first four images represent a Single Approval Point with a particular principal:</p>
+    <p><img src="{{ url_for('static', filename='images/rules/sedr.webp') }}" alt="EDR AP Symbol" width="20" height="20" style="vertical-align: middle;">  One <b>EDR</b> Approval Point</p>
+    <p><img src="{{ url_for('static', filename='images/rules/seog.webp') }}" alt="EOG AP Symbol" width="20" height="20" style="vertical-align: middle;">  One <b>EOG</b> Approval Point</p>
+    <p><img src="{{ url_for('static', filename='images/rules/shse.webp') }}" alt="House AP Symbol" width="20" height="20" style="vertical-align: middle;">  One <b>House</b> Approval Point</p>
+    <p><img src="{{ url_for('static', filename='images/rules/ssen.webp') }}" alt="Senate AP Symbol" width="20" height="20" style="vertical-align: middle;">  One <b>Senate</b> Approval Point</p>
+    <p>This symbol  <img src="{{ url_for('static', filename='images/rules/sany.webp') }}" alt="Generic AP Symbol" width="20" height="20" style="vertical-align: middle;">  represents one <b>Wild</b> Approval Point. Wild AP acts as a placeholder for any principal's AP. Sometimes, a card's text will specify which principal the Wild AP must come from. If it does not, the player may choose any one principal.</p>
+
     
     <h2>Card Types</h2>
     
     <h3>Analyst Cards</h3>
-    <p>Analyst Cards are the main characters of the game. You play one analyst at a time, use Actions to earn <b>Approval Points</b> from the Principals, and, eventually, get that analyst adopted. You win by being the first to get five analysts adopted.</p>
+    <p>Analyst Cards are the main characters of the game. You play one analyst at a time, use Actions to earn <b>Approval Points</b> from the Principals, and, eventually, get that analyst adopted. You win by being the first to get three analysts adopted.</p>
     
-    <p>All analysts have at least one native action. Analyst Native actions can be used once per turn. Analyst rarity determines the number of native actions, and your maximum hand size.</p>
+    <p>All analysts have at least one specialist action. Analyst specialist actions can be used once per turn. Analyst rarity determines the number of Specialist actions, and your maximum hand size.</p>
     <ul>
-        <li>Common Analysts - One Native Action - 7 Card Hand</li>
-        <li>Uncommon Analysts - Two Native Actions - 5 Card Hand</li>
-        <li>Rare Analysts - Two Native Actions AND a Powerful Passive Ability - 3 Card Hand</li>
+        <li>Common Analysts - One Specialist Action - 7 Card Hand</li>
+        <li>Uncommon Analysts - Two Specialist Actions - 5 Card Hand</li>
+        <li>Rare Analysts - Two Specialist Actions AND a Powerful Passive Ability - 3 Card Hand</li>
     </ul>
+    <p><b>Additionally, every analyst has the basic action "Present", which allows them to gain 1 AP with the principal of their choice</b></p>
     
     <p>Each Analyst has one of three presentation styles. They are either Readers, Closers, or Speakers. The kind of analyst you deploy determines the goalposts you need to meet in order to earn approval from each principal. Some principals may require, for example, 2 AP for Readers to get adopted while only needing 1 AP for Closers to get adopted. Here is some more detail on the styles:</p>
 
@@ -106,14 +123,106 @@
             </div>
             <div class="style-description">
                 <h4>Principal Cards</h4>
-                <p>Principals are the judges and juries of the REC. The game starts with 4 nameless "Base" principals each requiring a certain amount of AP from different Analyst Styles. But you can collect and play "Named" Principal cards (at the cost of an action) that fundamentally change the rules and the requirements for all Analysts to get adopted. All players on the board share the same 4 Principals, so playing a Named Principal is a good way to either boost yourself, or sabotage an opponent. There are 4 Principal Seats, each seat must be occupied by a Principal representing that seat's office, and only one principal can sit in a seat at a time. When a Named principal is in a seat, playing another Named principal to the same seat discards the previous principal.</p>
+                <p>Principals are the judges and juries of the REC. The game starts with 4 nameless "Base" principals each requiring a certain amount of AP from different Analyst Styles. But you can collect and play "Named" Principal cards (at the cost of an action) that immediately change the rules and the requirements for all Analysts to get adopted. All players on the board share the same 4 Principals, so playing a Named Principal is a good way to either boost yourself, or sabotage an opponent. There are 4 Principal Seats, each seat must be occupied by a Principal representing that seat's office, and only one principal can sit in a seat at a time. When a Named principal is in a seat, playing another Named principal to the same seat discards the previous principal.</p>
             </div>
         </div>
         
     </div>
     
     <h2>Game Structure</h2>
-
-    <h2>Win Conditions</h2>
+    <h3>Game Start</h3>
+    <p>When starting a game, every player should build: </p>
+    <ul>
+    <li>A 15 card Analyst Deck, containing only Analyst Cards</li>
+    <li>A 40-50 card Action Deck, containing any other cards you will want to play</li>
+    </ul>
+    <p>Every player should draw a hand of 5 cards from their Action Deck. They then draw 4 cards from the top of their Analyst Deck. One of those 4 cards will become their Active Analyst - the analyst that is in play - while the other 3 will be placed faced up but out of play in the analyst "bullpen".
+    </p>
+    <p> The game starts with the four (4) Base Principals setting the board state. The base principals have the following goalposts:</p>
+    <table>
+     <thead>
+      <tr>
+       <th scope = "col">Seat</th>
+       <th scope = "col">Readers</th>
+       <th scope = "col">Speakers</th>
+       <th scope = "col">Closers</th>
+      </tr>
+     </thead>
+     <tbody>
+     <tr>
+      <th scope = "row">EDR</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+     </tr>
+     <tr>
+      <th scope = "row">EOG</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+     </tr>
+     <tr>
+      <th scope = "row">House</th>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+     </tr>
+     <tr>
+      <th scope = "row">Senate</th>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+     </tr>
+    </tbody>
+    </table>
+    <h3>Turn Order</h3>
+    <p>Every player's turn occurs in the following phases: </p>
+    <ol>
+    <li><b>Judgement Phase</b>
+    <ul>
+    <li>If your active analyst has enough AP to meet the current board state, they are adopted. Score one point and move them to the Analyst Discard pile. Field a new analyst from your bullpen, and draw an analyst from you analyst deck to enter the bullpen. Proceed to the next phase.</li>
+    <li>If your active analyst does not have enough AP to meet the current board state and their turn counter is greater than or equal to three (3), they are rolled. Score no points and move them to the analyst discard pile. Field a new analyst from your bullpen, and draw an analyst from your analyst deck to enter your bullpen. Proceed to the next phase.</li>
+    <li>If your active analyst does not have enough AP to meet the current board state and their turn counter is less than three (3), increase the turn counter by one (1) and proceed to the next phase.
+    </ul>
+    </li>
+    <li><b>Action Phase</b> - Every analyst gets to take 3 actions per turn. You must take them here.</li>
+    <li><b>Draw Phase</b> - Draw up to your maximum hand size. Your maximum hand size is determined by the rarity of your active analyst.
+    <ul>
+    <li>If your active analyst is a Rare/Three-Star, your maximum hand size is 3.</li>
+    <li>If your active analyst is an Uncommon/Two-Star, your maximum hand size is 5.</li>
+    <li>If your active analyst is a Common/One-Star, your maximum hand size is 7.</li>
+    </ul>
+    </li>
+    <li><b>End of Turn</b></li>
+    </ol>
+    
+    <p>The game is over when a player scores 3 points!</p>
+    
+    <h2>Important Mechanics</h2>
+    <h3>The Turn Counter</h3>
+    <p>Every analyst gets 3 turns to try for adoption. Tracking what turn your analyst is on is an important part of playing the game. The turn counter starts at zero (0), and increments up by one in the Judgement Phase of every turn. Some cards affect the turn counter, incrementing it up or down, either forcing an analyst to play more aggressively or giving them time to exectue a long strategy. Be prepared to track the turn counter as you play.</p>
+    <h3>Who goes first?</h3>
+    <p>There is a first mover advantage. It is therefore the official decree of this rulebook that players play in the following order: the worst economist goes first, the best economist goes last.</p>
+    <h3>Decking Out</h3>
+    <p>If your Action Deck runs out of cards, shuffle your discard pile into your deck and continue playing. If you run out of playable analyst cards, you lose the game.</p>
+    <h3>Skepticism</h3>
+    <p>Skepticism is a highly disruptive status condition that is applied to a principal and analyst together. While a principal is skeptical of an analyst, that analyst cannot receive AP from that principal. In order to end a principal's skepticism you must gain the greater of three (3) or double the goalpost AP for another principal. Doing so will clear ALL skepticism from principals towards your analyst. Certain card effects will also clear skepticism for your analyst, though usually only for one specific principal.</p>
+    <h3>Distracted</h3>
+    <p>Distracted is a disruptive status condition that you can apply to other analysts and sometimes yourself. While an analyst is distracted, they must make a coin flip whenever they take an action or reaction.</P>
+    <ul>
+    <li>If the flip returns heads, they take the action or reaction as normal</li>
+    <li>If the flip returns tails, they spend their action but do not take the effect. The action card they played is discarded as though played, or if they were using a specialist action, that speclialist action becomes unavailable for the rest of the turn.</li>
+    </ul>
+    <p>Distracted is removed after you succeed the in the Distracted Check three (3) times, or via a card effect.</p>
+    <h3>Card Tags</h3>
+    <p>Some cards are tagged with either (Break) or (Environmental). These cards have synergies with particular effects, so keep an eye out. In addition, the cards have the following effects:</p>
+    <ul>
+    <li>(Break) cards reverse the order of play. While the initial order of play is left up to the players, after a (Break) card is played, it must be reversed.</li>
+    <li>(Environmental) cards affect every player in the game, including the player of the card.</li>
+    </ul>
+    <h3>Autoplay</h3>
+    <p>Some cards allow you to activate the effects of unknown cards, either in an oponents hand or on the top of your deck. When a Reaction Card is selected in this way, you can not activate its effect, and you do not get to select again for Autoplay. This is the fundamental risk for Autoplay, and should be considered as a trade-off when building your deck.</p>
+    
+    </div>
     
 {% endblock %}

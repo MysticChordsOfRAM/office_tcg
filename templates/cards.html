@@ -7,7 +7,7 @@
    <div class="card-gallery">
       {% for num in cards %}
          <div class="card-wrapper">
-            <img src="{{url_for('static', filename='images/cards/cards_spoof_' ~ num ~ '.webp') }}"
+            <img src="{{url_for('static', filename='images/cards/cards_alt_' ~ num ~ '.webp') }}"
                  alt = "Card {{ num }}"
                  loading="lazy">
          </div>
